@@ -1,7 +1,7 @@
 ---
 title: Basic Odometry
-date: 2024-01-24 10:12:00 -0700
 author: Tropix
+date: 2024-01-24 10:12:00 -0700
 categories: [Odometry, Basic]
 tags: [software,odometry]     # TAG names should always be lowercase
 ---
