@@ -1,7 +1,7 @@
 ---
 title: Basic Odometry
 date: 2024-01-24 10:12:00 -0700
-categories: [homelab, hardware]
+categories: [Odometry, Basic]
 tags: [software,odometry]     # TAG names should always be lowercase
 ---
 
@@ -311,6 +311,3 @@ constexpr double tracking_wheel_circumference = 2 * M_PI * tracking_wheel_radius
 double average_encoder_position = (LeftEncoder.position(vex::degrees) + RightEncoder.position(vex::degrees)) / 2;
 double distance_traveled = (average_encoder_position / 360) * tracking_wheel_circumference;
 ```
-
-![img-description](https://pbs.twimg.com/media/FJAFshwXoAEf9HV?format=jpg&name=large)
-_My Lab_
