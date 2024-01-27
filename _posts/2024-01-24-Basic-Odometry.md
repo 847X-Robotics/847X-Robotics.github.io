@@ -2,8 +2,10 @@
 title: Basic Odometry
 author: Tropix
 date: 2024-01-24 10:12:00 -0700
-categories: [Odometry, Basic]
+categories: [Odometry, Introductory]
 tags: [software,odometry]     # TAG names should always be lowercase
+image:
+  path: https://i.postimg.cc/sXyB296P/Tropical-pfp.png
 ---
 
 # Odometry
