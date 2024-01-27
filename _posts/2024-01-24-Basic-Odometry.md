@@ -6,6 +6,8 @@ categories: [Odometry, Introductory]
 tags: [software,odometry]     # TAG names should always be lowercase
 image:
   path: https://i.postimg.cc/sXyB296P/Tropical-pfp.png
+  width: 640 #correct image size
+  height: 480
 ---
 
 # Odometry
