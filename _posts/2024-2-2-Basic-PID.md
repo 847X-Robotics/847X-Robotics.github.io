@@ -5,8 +5,6 @@ date: 2024-02-2 08:03:00 -0700
 categories: [PID, Introductory]
 tags: [software, pid, beginner]     # TAG names should always be lowercase
 ---
-
-
 # PID
 
 *How do you control motors quickly and efficiently?*
@@ -30,8 +28,11 @@ So for example, if we want the motor to move to 100 degrees, but the motor is cu
 `error = 100 - 20 = 80`
 
 The first and simplest term in PID is the proportional term. The proprtional term is as the name suggests. It is proportional to the error. `proportional = kP * error` where kP is a constant that needs to be tuned by the user. Too low will make the motor reach the target slowly while too high can cause the motor to go past the target and oscillate. Right now, the output would be only the proportional. This alone is better as opposed to a singular speed for motor control because with a P loop, the motor essentially goes faster when far away from a target and slower when closer to the target
+
 ## Writing an Implementation
+
 ### Finding Motor Travel
+
 The first step is measuring how much progress the motors have made. This can be done using motor encoders. Finding this value will be different for every use case of PID. For example, for linear flywheel PID, you might use `double pros::Motor::get_actual_velocity ( )` while for lifts, you might use `double pros::Motor::get_position();`
 
 ```cpp
@@ -53,7 +54,9 @@ void autonomous() {
     P_loop(90, 0.6); // move lift motor to 90 degrees with kP = 0.6
 }
 ```
+
 This code is mostly ok except for one issue. The loop only runs while the error is not equal to 0. The issue is that the loop will run forever as it isn't possible nor necessary to get the motor to such a precise number. This can be solved by making a range of values when the controller can exit or otherwise known as a`deadband`. We can check if the absolute value of the error is below deadband like so.
+
 ```cpp
 float deadband = 1;
 while (fabs(error) > deadband)){
@@ -65,7 +68,9 @@ while (fabs(error) > deadband)){
 >
 
 This will be the same units as the sensor units you use. So for this example, a deadband of 1 is a settle range of 1 degree. 
+
 # Integral 
+
 The next term in PID is the integral term.
 
 The issue with just using the proportional term is that in some cases, the proportional gets too small when close to the target like in this simulation below.
@@ -77,17 +82,22 @@ The integral term can help fix this. The `integral` is the area under a function
 <iframe src="https://www.desmos.com/calculator/ite1iqprlv?embed" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 Since we are integrating the error, the integral is basically the sum of the error. Thus, integral can be calculated simply by summing up the error.
+
 ```cpp
 float integral = 0;
 
 while...// inside the loop
 inegral += error;
 ```
+
 Sometimes the  `integral` term may be too high or too low which is why there is also a constant for the integral-`kI`.
+
 ```cpp
 float I = integral * kI;
 ```
+
 ## Implementation
+
 ```cpp
 #include "main.h"
 #include  <cmath>  // Include cmath for fabs()
@@ -129,10 +139,13 @@ If the constant for the derivative or `kD` is tuned correctly, you can see resul
 >
 
 The derivative in this context can simply be calculated by subtracting the error from the previous error like so.
+
 ```cpp
 float derivative = previousError - error;
 ```
+
 The previous error can be found by updating it to the error after the derivative is calculated.
+
 ```cpp
 while...//control loop
 
@@ -183,7 +196,9 @@ void autonomous() {
 
 You can write a c++ `class` for the PID.  Doing so has many benefits. With c++ classes, you can create multiple objects of the same PID. So in other words, you write the PID code once but it can get used for any other function.
 ## Constructor
+
 To begin with, inside the class, there should be a constructor like so.
+
 ```cpp
 class PID {
     // Constructor
@@ -208,21 +223,29 @@ class PID {
       prevError(0) {}
 };
 ```
+
 So what we have above is a constructor. This means that values can be passed into the class upon creation of the object. So normally, you would have to do this:
+
 ```cpp
 PID pid;
 pid.kP = 1;
 pid.kI = 1;
 pid.kD = 1;
 ```
+
 But with constructors,
+
 ```cpp
 PID pid(1,2,3); 
 // constructors also get called at the creation of an object!
 ```
+
 Everything after the `:` are the initial values. `kP`, `kD`, and `kI` initial values are inputted. The `integral` and `prevError`initialize at 0 which also means that they can not be initialized with an input. 
+
 ## Member Functions
+
 The next step is to make a function for calulating the output. It can be the same as previously mentioned but instead of actually controlling the motor, it outputs the velocity for the motor. The function should be `public:` so it can be accessed externally. 
+
 ```cpp
 #include "main.h"
 
@@ -250,16 +273,20 @@ class PID {
     
 };
 ```
+
 It is a good idea to makea `reset()` function for the `PID` class. This function should reset just the `integral` and `prevErorr` to `0` because when the loop exits, the `integral` and `prevErorr` will still be based on the previous loop. The `reset()` function can simply be:
+
 ```cpp
 void reset() {
 	integral = 0;
 	prevError = 0;
 }
 ```
+
 This can also be `public:` in the public keyword.
 ## Member Variables
 All the variables can be kept within the `protected:` keyword.  This means that the variables will be inaccessable from outside but accessable by the other member functions in future uses.
+
 ```cpp
     protected:
     // Member variables
@@ -317,11 +344,15 @@ class PID {
     
 };
 ```
+
 This now lets you create a `PID`object initialized with `kP`,`kD`, and `kI`. You can make however many you want and use it for whatever you want.
+
 > The settling conditions can be created outside since the settling conditions vary from use to use. 
+
 ## Examples
 
 Lift example:
+
 ```cpp
 pros::Motor lift(10, pros::E_MOTOR_GEARSET_18); // port 10, 200 RPM
 
@@ -345,7 +376,9 @@ void autonomous() {
     
 }
 ```
+
 Flywheel example
+
 ```cpp
 pros::Motor flywheel(10, pros::E_MOTOR_GEARSET_06); // port 10, 600 RPM
 
@@ -360,4 +393,5 @@ void autonomous() {
     fwPID.reset();
 }
 ```
+
 > Flywheel control loops are often only manually exited
