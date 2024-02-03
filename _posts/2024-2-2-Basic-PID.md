@@ -14,14 +14,12 @@ tags: [software, pid, begginer]     # TAG names should always be lowercase
 PID is a method of controlling motors using sensor data. While it's often viewed as a complicated process, the code behind it can be relatively simple. This tutorial explains the math behind PID and outlines how to create a basic PID controller similar to ones used in large libraries like LemLib and JAR.
 
 PID stands for 
-
 > **P**roportional
-> 
-> **I**ntegral
-> **D**erivative
+**I**ntegral
+**D**erivative
+>
 
 ***
-
 # Proportional
 
 To begin with, all PID calculations are based off of the `error`. The error is the difference in the target and the current sensor value of the motor. 
@@ -30,11 +28,8 @@ So for example, if we want the motor to move to 100 degrees, but the motor is cu
 `error = 100 - 20 = 80`
 
 The first and simplest term in PID is the proportional term. The proprtional term is as the name suggests. It is proportional to the error. `proportional = kP * error` where kP is a constant that needs to be tuned by the user. Too low will make the motor reach the target slowly while too high can cause the motor to go past the target and oscillate. Right now, the output would be only the proportional. This alone is better as opposed to a singular speed for motor control because with a P loop, the motor essentially goes faster when far away from a target and slower when closer to the target
-
 ## Writing an Implementation
-
 ### Finding Motor Travel
-
 The first step is measuring how much progress the motors have made. This can be done using motor encoders. Finding this value will be different for every use case of PID. For example, for linear flywheel PID, you might use `double pros::Motor::get_actual_velocity ( )` while for lifts, you might use `double pros::Motor::get_position();`
 
 ```cpp
@@ -88,9 +83,7 @@ Sometimes the  `integral` term may be too high or too low which is why there is 
 ```cpp
 float I = integral * kI;
 ```
-
 ## Implementation
-
 ```cpp
 #include "main.h"
 #include  <cmath>  // Include cmath for fabs()
@@ -116,9 +109,7 @@ void autonomous() {
     PI_loop(90, 1, 0.6, 0.1); 
 }
 ```
-
 # Derivative
-
 The derivative is the rate of change of a function. If a function is increasing very quickly, the derivative will be large. Otherwise, if a function is decreasing, the derivative will be negative. 
 
 Because the derivative is the rate of change of the error, when it is added to the output, it will increase the motor power faster when accelerating and will  increace the deacceleration amount.
@@ -130,7 +121,6 @@ If the constant for the derivative or `kD` is tuned correctly, you can see resul
 
 >Here, the robot reaches the target in a very controlled matter.
 >
-
 The derivative in this context can simply be calculated by subtracting the error from the previous error like so.
 ```cpp
 float derivative = previousError - error;
@@ -142,9 +132,7 @@ while...//control loop
 float derivative = previousError - error;
 previousError = error;
 ```
-
 # The Full PID Implementation
-
 ```cpp
 
 #include "main.h"
@@ -181,9 +169,7 @@ void autonomous() {
 }
 
 ```
-
 # A More Modular PID design
-
 You can write a c++ `class` for the PID.  Doing so has many benefits. With c++ classes, you can create multiple objects of the same PID. So in other words, you write the PID code once but it can get used for any other function.
 ## Constructor
 To begin with, inside the class, there should be a constructor like so.
@@ -273,10 +259,7 @@ All the variables can be kept within the `protected:` keyword.  This means that 
     float prevError = 0;
 ```
 > Note: There is also a `private:` keyword that is similar to `protected:` but the private variables can not be accessed by other member functions in future uses.
->
-
 ## Full Implementation
-
 ```cpp
 using namespace std;
 #include <cmath> // Include cmath for fabs()
@@ -320,12 +303,8 @@ class PID {
     
 };
 ```
-
-This now lets you create a `PID`object initialized with `kP`, `kD`, and `kI`. You can make however many you want and use it for whatever you want.
-
-> The settling conditions can be created outside since the settling conditions vary from use to use.
->
-
+This now lets you create a `PID`object initialized with `kP`,`kD`, and `kI`. You can make however many you want and use it for whatever you want.
+> The settling conditions can be created outside since the settling conditions vary from use to use. 
 ## Examples
 
 Lift example:
