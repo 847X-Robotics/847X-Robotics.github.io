@@ -3,7 +3,7 @@ title: Basic PID
 author: Prahas
 date: 2024-02-2 08:03:00 -0700
 categories: [PID, Introductory]
-tags: [software, pid, begginer]     # TAG names should always be lowercase
+tags: [software, pid, beginner]     # TAG names should always be lowercase
 ---
 
 
@@ -16,8 +16,8 @@ PID is a method of controlling motors using sensor data. While it's often viewed
 PID stands for 
 
 > **P**roportional
-> **I**ntegral
-> **D**erivative
+  **I**ntegral
+  **D**erivative
 >
 
 ***
