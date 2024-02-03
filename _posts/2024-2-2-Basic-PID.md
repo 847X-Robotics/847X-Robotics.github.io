@@ -14,12 +14,14 @@ tags: [software, pid, begginer]     # TAG names should always be lowercase
 PID is a method of controlling motors using sensor data. While it's often viewed as a complicated process, the code behind it can be relatively simple. This tutorial explains the math behind PID and outlines how to create a basic PID controller similar to ones used in large libraries like LemLib and JAR.
 
 PID stands for 
+
 > **P**roportional
-**I**ntegral
-**D**erivative
->
+> 
+> **I**ntegral
+> **D**erivative
 
 ***
+
 # Proportional
 
 To begin with, all PID calculations are based off of the `error`. The error is the difference in the target and the current sensor value of the motor. 
@@ -128,6 +130,7 @@ If the constant for the derivative or `kD` is tuned correctly, you can see resul
 
 >Here, the robot reaches the target in a very controlled matter.
 >
+
 The derivative in this context can simply be calculated by subtracting the error from the previous error like so.
 ```cpp
 float derivative = previousError - error;
@@ -317,7 +320,9 @@ class PID {
     
 };
 ```
+
 This now lets you create a `PID`object initialized with `kP`, `kD`, and `kI`. You can make however many you want and use it for whatever you want.
+
 > The settling conditions can be created outside since the settling conditions vary from use to use.
 >
 
