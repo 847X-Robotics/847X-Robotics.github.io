@@ -14,12 +14,14 @@ tags: [software, pid, begginer]     # TAG names should always be lowercase
 PID is a method of controlling motors using sensor data. While it's often viewed as a complicated process, the code behind it can be relatively simple. This tutorial explains the math behind PID and outlines how to create a basic PID controller similar to ones used in large libraries like LemLib and JAR.
 
 PID stands for 
+
 > **P**roportional
-**I**ntegral
-**D**erivative
+> **I**ntegral
+> **D**erivative
 >
 
 ***
+
 # Proportional
 
 To begin with, all PID calculations are based off of the `error`. The error is the difference in the target and the current sensor value of the motor. 
@@ -58,8 +60,10 @@ while (fabs(error) > deadband)){
     // control loop code
 }
 ```
+
 > fabs() is a standard c++ function that returns the absolute value of a `float` datatype! 
 >
+
 This will be the same units as the sensor units you use. So for this example, a deadband of 1 is a settle range of 1 degree. 
 # Integral 
 The next term in PID is the integral term.
@@ -109,7 +113,9 @@ void autonomous() {
     PI_loop(90, 1, 0.6, 0.1); 
 }
 ```
+
 # Derivative
+
 The derivative is the rate of change of a function. If a function is increasing very quickly, the derivative will be large. Otherwise, if a function is decreasing, the derivative will be negative. 
 
 Because the derivative is the rate of change of the error, when it is added to the output, it will increase the motor power faster when accelerating and will  increace the deacceleration amount.
@@ -121,6 +127,7 @@ If the constant for the derivative or `kD` is tuned correctly, you can see resul
 
 >Here, the robot reaches the target in a very controlled matter.
 >
+
 The derivative in this context can simply be calculated by subtracting the error from the previous error like so.
 ```cpp
 float derivative = previousError - error;
@@ -132,7 +139,9 @@ while...//control loop
 float derivative = previousError - error;
 previousError = error;
 ```
+
 # The Full PID Implementation
+
 ```cpp
 
 #include "main.h"
@@ -169,7 +178,9 @@ void autonomous() {
 }
 
 ```
+
 # A More Modular PID design
+
 You can write a c++ `class` for the PID.  Doing so has many benefits. With c++ classes, you can create multiple objects of the same PID. So in other words, you write the PID code once but it can get used for any other function.
 ## Constructor
 To begin with, inside the class, there should be a constructor like so.
@@ -259,7 +270,10 @@ All the variables can be kept within the `protected:` keyword.  This means that 
     float prevError = 0;
 ```
 > Note: There is also a `private:` keyword that is similar to `protected:` but the private variables can not be accessed by other member functions in future uses.
+>
+
 ## Full Implementation
+
 ```cpp
 using namespace std;
 #include <cmath> // Include cmath for fabs()
