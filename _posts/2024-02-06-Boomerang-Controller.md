@@ -39,8 +39,8 @@ class Point {
             float deltaY = y - other.y;
             return sqrt(deltaX * deltaX + deltaY * deltaY);
         }
-        // Method to convert degrees to radians  float 
-        degreesToRadians(float degrees) { return degrees * M_PI / 180.0;}
+// Method to convert degrees to radians  float 
+degreesToRadians(float degrees) { return degrees * M_PI / 180.0;}
 		
         // angular error
         float angleError(const Point& other) { return other.theta - theta; }
@@ -54,9 +54,9 @@ int main() {
     Point p2(6.0, 8.0);
     std::cout << "Distance between p1 and p2: " << p1.distanceTo(p2) << std::endl;
 	
-	  Point p3(10, 4, 90);
-	  Point p4(6, 12, 180);
-	  std::cout << "Angle between p3 and p4: " << p3.angleError(p4) << std::endl;
+	Point p3(10, 4, 90);
+	Point p4(6, 12, 180);
+	std::cout << "Angle between p3 and p4: " << p3.angleError(p4) << std::endl;
 }
 ```
 
