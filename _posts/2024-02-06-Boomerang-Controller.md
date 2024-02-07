@@ -81,7 +81,7 @@ $$\left(d\cdot\cos\left(\theta\right),d\cdot\sin\left(\theta\right)\right)$$
 
 Where `d` is the distance.
 
-<iframe src="https://www.desmos.com/calculator/zmrytglsuq" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<iframe src="https://www.desmos.com/calculator/zmrytglsuq" width="620" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 `c++` example:
 
@@ -127,7 +127,7 @@ $d_{lead}$ is simply a constant that normally fits under the restriction $\left\
 Larger $d_{lead}$ leads to higher curvature in the path.
 $$\left(Target_{x}-d\cos\left(\theta\right)\cdot d_{lead},Target_{y}-d\sin\left(\theta\right)\cdot d_{lead}\right)$$
 
-<iframe src="https://www.desmos.com/calculator/dnlt6hthvz" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<iframe src="https://www.desmos.com/calculator/dnlt6hthvz" width="620" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 # Basic Code Implementation 
 
@@ -198,4 +198,4 @@ void boomerang(float x, float y, float theta, float dlead) {
 <iframe src="https://www.desmos.com/calculator/ggffybeczb" width="620" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
 
 ## Live
-<iframe src="https://www.desmos.com/calculator/eisvxohxlh" width="500" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
+<iframe src="https://www.desmos.com/calculator/eisvxohxlh" width="620" height="500" style="border: 1px solid #ccc" frameborder=0></iframe>
