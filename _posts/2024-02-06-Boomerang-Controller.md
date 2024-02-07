@@ -122,7 +122,7 @@ float distanceTo(const Point& other) const {
 
 There is one more calculation for the `carrot point`, $d_{lead}$. 
 
-$d_{lead}$ is simply a constant that normally fits under the restriction $\left\{0\le d_{lead}\le1\right\}$ and multiplies `d`.
+$d_{lead}$ is simply a constant that normally fits under the restriction $\left\{0\le d_{\text{lead}}\le1\right\}$ and multiplies `d`.
 
 Larger $d_{lead}$ leads to higher curvature in the path.
 $$\left(Target_{x}-d\cos\left(\theta\right)\cdot d_{lead},Target_{y}-d\sin\left(\theta\right)\cdot d_{lead}\right)$$
