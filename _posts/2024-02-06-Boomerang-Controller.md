@@ -4,6 +4,7 @@ author: Prahas
 date: 2024-02-6 06:24:00 -0700
 categories: [boomerang-controller]
 tags: [software, boomerang-controller, seeking-pid]     # TAG names should always be lowercase
+usemathjax: true
 ---
 To begin with, the Boomerang Controller is not a control algorithm on its own. To call it that assumes that the Boomerang Controller can get to the targets on its own.
 
