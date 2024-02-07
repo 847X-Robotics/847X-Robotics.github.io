@@ -1,9 +1,10 @@
 ---
 title: Basic Motion Profiling
 author: Josephine
-date: 2024-02-07
-categories: [Introductory]
-tags: [software, beginner]
+date: 2024-02-07 01:15:00 -0700
+categories: [Introductory, Motion-Profiling]
+tags: [software, beginner, open-loop]
+math: true
 ---
 
 # Basic Motion Profiling
