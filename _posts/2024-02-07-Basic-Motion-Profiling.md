@@ -17,7 +17,7 @@ A trapezoidal motion profile is the most basic kind of profile and takes into ac
 ![Position and velocity v. time graph](https://i.imgur.com/lN8peLv.png)
 
 ### Math
-A motion profile is broken into three parts: acceleration, cruising, and deceleration. These can be represented on the graph above:
+A motion profile is broken into three parts: acceleration, cruising, and deceleration. These can be represented using the same graph from above:
 ![Acceleration, cruising, and deceleration separated](https://i.imgur.com/QMlZ64h.png)
 To calculate the time and distances for these, we can go back to our basic kinematics equations:
 $$x(t) = x_{0} + v_{0}t + \frac{1}{2}t^2\\
