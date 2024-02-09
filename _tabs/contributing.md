@@ -118,4 +118,4 @@ image:
 Add italics to the next line of an image, then it will become the caption and appear at the bottom of the image:
 
 `![img-description](/path/to/image)`
-_Image Caption_
+_Image Caption_ 
