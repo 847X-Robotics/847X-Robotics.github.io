@@ -4,7 +4,6 @@ author: Josephine
 date: 2024-02-09 04:15:00 -0800
 categories: [PID]
 tags: [software, pid]
-math: true
 ---
 
 In a traditional PID loop, the I or integral term is mostly used to maintain the state of the system. When creating a PID loop that exits, such as for moving forwards or turning to a heading, we don't need this holding functionality from the integral term. However, many will still choose to use I because it can help reduce steady state error. Unfortunately, in this unconventional kind of PID loop, one major downside of using integral is how easily it introduces integral windup.
