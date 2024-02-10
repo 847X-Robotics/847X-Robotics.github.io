@@ -1,6 +1,6 @@
 ---
 # the default layout is 'page'
-icon: fas fa-info-circle
+icon: fa-solid fa-file-circle-plus
 order: 4
 ---
 Contributing is quick and simple!
