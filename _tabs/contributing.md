@@ -69,7 +69,8 @@ tags: [TAG]     # TAG names should always be lowercase
 ```
 ### author:
 ```
----  author:  <author_id>  # for single entry  
+---
+author:  <author_id>  # for single entry  
 # or  
 authors:  [<author1_id>,  <author2_id>]  # for multiple entries  
 ---
@@ -104,10 +105,12 @@ A thumbnail for your page can be added like this
 ```
 image:
   path: https://i.postimg.cc/grFzjG4w/Tropical-pfp.png
-  ```
- #### Dimensions
+```
+
+#### Dimensions
  You can change the dimensions by adding the `height` and `width` in pixels.
- ```
+ 
+```
 image:
   path: https://i.postimg.cc/grFzjG4w/Tropical-pfp.png
   width: 640 #correct image size
