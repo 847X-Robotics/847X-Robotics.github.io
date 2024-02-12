@@ -1,7 +1,7 @@
 ---
 title: Basic Motion Profiling
 author: Josephine
-date: 2024-02-07 01:15:00 -0700
+date: 2024-02-07 01:15:00 -0800
 categories: [Introductory, Motion-Profiling]
 tags: [software, beginner, open-loop]
 math: true

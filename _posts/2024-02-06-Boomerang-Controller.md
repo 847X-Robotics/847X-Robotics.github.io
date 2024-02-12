@@ -1,7 +1,7 @@
 ---
 title: Boomerang Controller
 author: Prahas
-date: 2024-02-6 06:24:00 -0700
+date: 2024-02-6 06:24:00 -0800
 categories: [boomerang-controller]
 tags: [software, boomerang-controller, seeking-pid]     # TAG names should always be lowercase
 math: true
